@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assets Creator- Target Details</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">Target Details</div>
+    <div class="card">
+      <!-- User info -->
+      <h2 id="user-name-display" style="color:white;"></h2>
+      <p id="user-email-display" style="color:#8b8f9c; margin-bottom:20px;"></p>
+      
+      <!-- Target details -->
+      <p><strong>Target Amount:</strong> <span id="target-amount-display"></span></p>
+      <p><strong>Start Date:</strong> <span id="start-date-display"></span></p>
+      <p><strong>End Date:</strong> <span id="end-date-display"></span></p>
+      <p><strong>Completed On:</strong> <span id="completed-date-display"></span></p>
+      
+      <!-- Transaction table -->
+      <div class="table-container">
+        <table id="transactions-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Time</th>
+              <th>Amount</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      
+      <button class="btn pdf-btn" id="download-pdf">Download PDF</button>
+    </div>
+  </div>
+  
+  <!-- Bottom Navigation (Icons Only) -->
+  <div class="bottom-nav">
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i></a>
+    <a href="profile.html" class="nav-item"><i class="fas fa-user"></i></a>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="details.js"></script>
+</body>
+
+</html>

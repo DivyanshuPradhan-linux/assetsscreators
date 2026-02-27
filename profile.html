@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Money Count - Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">Profile</div>
+    
+    <!-- User Info Card -->
+    <div class="card">
+      <h2 id="user-name" style="color:white; margin-bottom: 8px;"></h2>
+      <p id="user-email" style="color:#8b8f9c;"></p>
+    </div>
+    
+    <!-- Statistics Cards -->
+    <div class="stats-container">
+      <div class="stat-card">
+        <div class="stat-number" id="total-targets">0</div>
+        <div>Total Targets</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="completed-targets">0</div>
+        <div>Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="ongoing-targets">0</div>
+        <div>Ongoing</div>
+      </div>
+    </div>
+    
+    <!-- Completed Targets Section -->
+    <h3 style="margin: 20px 0 10px; color: #e1e4e8;">Completed Targets</h3>
+    <div id="completed-targets-container"></div>
+    
+    <!-- Action Buttons -->
+    <div style="display: flex; gap: 10px; margin-top: 30px;">
+      <button class="btn btn-secondary" style="flex:1;" id="forgot-password-btn">Forgot Password</button>
+      <button class="btn" style="flex:1;" id="logout-btn">Logout</button>
+    </div>
+  </div>
+  
+  <!-- Bottom Navigation (Icons Only) -->
+  <div class="bottom-nav">
+    <a href="index.html" class="nav-item"><i class="fas fa-home"></i></a>
+    <a href="profile.html" class="nav-item active"><i class="fas fa-user"></i></a>
+  </div>
+  
+  <!-- PDF generation library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+  
+  <script type="module" src="profile.js"></script>
+</body>
+
+</html>

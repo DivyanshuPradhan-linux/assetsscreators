@@ -1,0 +1,396 @@
+/* style.css - Universal dark theme styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+  background-color: #0a0c10;
+  color: #e1e4e8;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 20px 80px 20px;
+}
+
+/* Header */
+.header {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons */
+.btn {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.btn-secondary {
+  background: #2d2f36;
+  box-shadow: none;
+}
+
+.btn-secondary:hover {
+  background: #3a3c44;
+}
+
+/* Smaller Add button inside target box */
+.add-money-btn {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  flex: 1;
+}
+
+.add-money-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.add-money-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Cards */
+.card {
+  background: #1a1c22;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 1px solid #2d2f36;
+}
+
+/* Bottom Navigation - Icons Only */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #1a1c22;
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 0;
+  border-top: 1px solid #2d2f36;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item {
+  text-align: center;
+  color: #8b8f9c;
+  text-decoration: none;
+  font-size: 24px;
+  /* Icon size */
+  transition: all 0.2s ease;
+  padding: 8px 16px;
+  border-radius: 20px;
+  line-height: 1;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+  background: rgba(110, 142, 251, 0.1);
+}
+
+.nav-item.active {
+  color: #a777e3;
+  background: linear-gradient(135deg, #6e8efb20, #a777e320);
+  border: 1px solid #a777e3;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 12px 16px;
+  margin: 8px 0;
+  background: #2d2f36;
+  border: 1px solid #3a3c44;
+  border-radius: 8px;
+  color: #e1e4e8;
+  font-size: 16px;
+  transition: border 0.2s;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: #a777e3;
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+}
+
+.modal-content {
+  background: #1a1c22;
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid #2d2f36;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  color: #8b8f9c;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+/* Target Box */
+.target-box {
+  background: #1a1c22;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 1px solid #2d2f36;
+  position: relative;
+}
+
+.target-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.target-header h3 {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+.delete-icon {
+  cursor: pointer;
+  color: #8b8f9c;
+  font-size: 1.2rem;
+  transition: color 0.2s;
+}
+
+.delete-icon:hover {
+  color: #ff6b6b !important;
+}
+
+.countdown {
+  font-size: 1.1rem;
+  color: #6e8efb;
+  margin: 10px 0;
+}
+
+.amount-input {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.total-saved {
+  font-weight: 600;
+  color: #4caf50;
+  display: block;
+  margin: 8px 0;
+}
+
+.details-btn {
+  background: transparent;
+  border: 2px solid #6e8efb;
+  color: #6e8efb;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+
+.details-btn:hover {
+  background: #6e8efb;
+  color: #fff;
+}
+
+/* Delete Dialog */
+.delete-dialog {
+  background: #1a1c22;
+  border: 1px solid #ff4d4d;
+  border-radius: 8px;
+  padding: 20px;
+  position: absolute;
+  right: 10px;
+  top: 50px;
+  z-index: 100;
+  min-width: 250px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.delete-dialog input {
+  background: #2d2f36;
+}
+
+.delete-dialog button {
+  margin: 5px;
+}
+
+/* Table */
+.table-container {
+  overflow-x: auto;
+  margin: 20px 0;
+  border-radius: 8px;
+  border: 1px solid #2d2f36;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #1a1c22;
+}
+
+th {
+  background: #2d2f36;
+  color: #fff;
+  padding: 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #2d2f36;
+  color: #e1e4e8;
+}
+
+/* Profile stats */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+
+.stat-card {
+  background: #1a1c22;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid #2d2f36;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #a777e3;
+}
+
+/* Add target button */
+.add-target {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.add-target .btn {
+  padding: 14px 40px;
+  font-size: 18px;
+}
+
+/* Error messages */
+.error {
+  color: #ff6b6b;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+/* Toast container */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header {
+    font-size: 1.8rem;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
