@@ -11,6 +11,10 @@ body {
   color: #e1e4e8;
   min-height: 100vh;
   line-height: 1.6;
+   background-image: url("market.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .container {
