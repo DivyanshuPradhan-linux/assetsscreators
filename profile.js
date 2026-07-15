@@ -126,14 +126,30 @@ async function generatePDF(targetId, target, symbol) {
   
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
-  
-  pdf.setFillColor(26, 28, 34);
+
+  const theme = {
+    pageBg: [255, 255, 255],
+    titleColor: [18, 24, 33],
+    textColor: [18, 24, 33],
+    tableFill: [255, 255, 255],
+    tableText: [40, 40, 40],
+    borderColor: [220, 224, 230],
+    headerFill: [255, 255, 255],
+    headerText: [18, 24, 33],
+    alternateRow: [248, 250, 252]
+  };
+
+  pdf.setFillColor(...theme.pageBg);
   pdf.rect(0, 0, 210, 297, 'F');
-  pdf.setTextColor(255, 255, 255);
-  
+  pdf.setTextColor(...theme.titleColor);
+
+  pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(22);
   pdf.text('Target Details', 14, 22);
+
+  pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(12);
+  pdf.setTextColor(...theme.textColor);
   pdf.text(`Name: ${profile.firstName} ${profile.lastName}`, 14, 32);
   pdf.text(`Email: ${currentUser.email}`, 14, 42);
   pdf.text(`Target Amount: ${symbol}${target.targetAmount}`, 14, 52);
@@ -155,7 +171,7 @@ async function generatePDF(targetId, target, symbol) {
     return [t.date, t.time, `${symbol}${t.amount}`, `${symbol}${total}`];
   });
   
-  pdf.autoTable({
+ /* pdf.autoTable({
     head: [
       ['Date', 'Time', 'Amount', 'Total']
     ],
@@ -167,6 +183,67 @@ async function generatePDF(targetId, target, symbol) {
   });
   
   pdf.save(`target-${targetId}.pdf`);
+
+}*/
+/*pdf.autoTable({
+  head: [['Date', 'Time', 'Amount', 'Total']],
+  body: tableData,
+  startY: 90,
+  // 1. Global styles for the table grid
+  styles: { 
+    lineColor: [220, 224, 230], 
+    lineWidth: 0.5,
+    font: 'helvetica'
+  },
+  // 2. Clean, professional dark header
+  headStyles: { 
+    fillColor: [45, 47, 54], 
+    textColor: [255, 255, 255],
+    fontStyle: 'bold'
+  },
+  // 3. Light alternating rows for readability
+  alternateRowStyles: { 
+    fillColor: [245, 247, 250] 
+  },
+  // 4. Right-align your financial columns (highly recommended!)
+  columnStyles: {
+    2: { halign: 'right' }, // Amount column
+    3: { halign: 'right' }  // Total column
+  }
+});
+
+pdf.save(`target-${targetId}.pdf`);*/
+pdf.autoTable({
+  head: [['Date', 'Time', 'Amount', 'Total']],
+  body: tableData,
+  startY: 90,
+  styles: {
+    fillColor: theme.tableFill,
+    textColor: theme.tableText,
+    font: 'helvetica',
+    fontSize: 10,
+    cellPadding: 6,
+    lineColor: theme.borderColor,
+    lineWidth: 0.5
+  },
+  headStyles: {
+    fillColor: theme.headerFill,
+    textColor: theme.headerText,
+    fontStyle: 'bold',
+    fontSize: 11,
+    lineColor: theme.borderColor,
+    lineWidth: 0.5
+  },
+  alternateRowStyles: {
+    fillColor: theme.alternateRow
+  },
+  columnStyles: {
+    2: { halign: 'right' },
+    3: { halign: 'right' }
+  }
+});
+
+pdf.save(`target-${targetId}.pdf`);
 }
 
 document.getElementById('forgot-password-btn').addEventListener('click', () => {
@@ -174,6 +251,11 @@ document.getElementById('forgot-password-btn').addEventListener('click', () => {
 });
 
 document.getElementById('logout-btn').addEventListener('click', async () => {
-  await signOut(auth);
-  window.location.href = 'login.html';
+  try {
+    await signOut(auth);
+    window.location.href = 'login.html';
+  } catch (error) {
+    console.error('Logout failed:', error);
+    alert('Logout failed. Please try again.');
+  }
 });
