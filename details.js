@@ -145,15 +145,30 @@ document.getElementById('download-pdf').addEventListener('click', async () => {
   
   const { jsPDF } = window.jspdf;
   const pdf = new jsPDF();
-  
-  // Dark theme PDF
-  pdf.setFillColor(26, 28, 34);
+
+  const theme = {
+    pageBg: [18, 24, 33],
+    titleColor: [255, 255, 255],
+    textColor: [240, 240, 240],
+    tableFill: [255, 255, 255],
+    tableText: [40, 40, 40],
+    borderColor: [220, 224, 230],
+    headerFill: [255, 255, 255],
+    headerText: [15, 15, 15],
+    alternateRow: [248, 250, 252]
+  };
+
+  pdf.setFillColor(...theme.pageBg);
   pdf.rect(0, 0, 210, 297, 'F');
-  pdf.setTextColor(255, 255, 255);
-  
+  pdf.setTextColor(...theme.titleColor);
+
+  pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(22);
   pdf.text('Target Details', 14, 22);
+
+  pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(12);
+  pdf.setTextColor(...theme.textColor);
   pdf.text(`Name: ${profile.firstName} ${profile.lastName}`, 14, 32);
   pdf.text(`Email: ${currentUser.email}`, 14, 42);
   pdf.text(`Target Amount: ${currencySymbol}${target.targetAmount}`, 14, 52);
@@ -182,9 +197,26 @@ document.getElementById('download-pdf').addEventListener('click', async () => {
     ],
     body: tableData,
     startY: 90,
-    styles: { fillColor: [26, 28, 34], textColor: [255, 255, 255], lineColor: [45, 47, 54] },
-    headStyles: { fillColor: [45, 47, 54], textColor: [255, 255, 255] },
-    alternateRowStyles: { fillColor: [30, 32, 38] }
+    styles: {
+      fillColor: theme.tableFill,
+      textColor: theme.tableText,
+      lineColor: theme.borderColor,
+      lineWidth: 0.5,
+      fontSize: 10,
+      cellPadding: 6
+    },
+    headStyles: {
+      fillColor: theme.headerFill,
+      textColor: theme.headerText,
+      fontStyle: 'bold',
+      lineColor: theme.borderColor,
+      lineWidth: 0.5
+    },
+    alternateRowStyles: { fillColor: theme.alternateRow },
+    columnStyles: {
+      2: { halign: 'right' },
+      3: { halign: 'right' }
+    }
   });
   
   pdf.save(`target-${targetId}.pdf`);
